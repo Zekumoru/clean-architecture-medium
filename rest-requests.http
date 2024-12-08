@@ -1,0 +1,31 @@
+// Install the REST Client extension by Huachao Mao to run these requests 
+
+GET http://localhost:3333/users
+
+###
+
+GET http://localhost:3333/users/-rVtJwfTQcact68ci3RDw
+
+###
+
+POST http://localhost:3333/users/create
+Content-Type: application/json
+
+{
+  "username": "zekumoru",
+  "password": "pass1234"
+}
+
+###
+
+PUT http://localhost:3333/users/-rVtJwfTQcact68ci3RDw/update
+Content-Type: application/json
+
+{
+  "username": "zeku",
+  "password": "pass1234"
+}
+
+###
+
+DELETE http://localhost:3333/users/-rVtJwfTQcact68ci3RDw/delete
