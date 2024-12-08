@@ -14,20 +14,18 @@ const app = express();
 app.use(express.json());
 
 // setup dependencies
-const nanoidIdGenRepository = new NanoIdGenRepository();
-const inMemoryUserRepository = new InMemoryUserRepository();
+const idGenRepository = new NanoIdGenRepository();
+const userRepository = new InMemoryUserRepository();
 
 // setup interactors
-const getAllInteractor = new GetAllUsersInteractor(inMemoryUserRepository);
+const getAllInteractor = new GetAllUsersInteractor(userRepository);
 const createInteractor = new CreateUserInteractor(
-  inMemoryUserRepository,
-  nanoidIdGenRepository
+  userRepository,
+  idGenRepository
 );
-const findByIdInteractor = new FindUserByIdInteractor(inMemoryUserRepository);
-const updateInteractor = new UpdateUserInteractor(inMemoryUserRepository);
-const deleteByIdInteractor = new DeleteUserByIdInteractor(
-  inMemoryUserRepository
-);
+const findByIdInteractor = new FindUserByIdInteractor(userRepository);
+const updateInteractor = new UpdateUserInteractor(userRepository);
+const deleteByIdInteractor = new DeleteUserByIdInteractor(userRepository);
 
 // setup controller
 const expressUserController = new ExpressUserController({
